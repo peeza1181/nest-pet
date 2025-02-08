@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { CategoryEntity } from 'src/category/category.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class PetEntity {
@@ -7,4 +8,7 @@ export class PetEntity {
 
   @Column()
   name: string;
+
+  @ManyToOne(() => CategoryEntity, (category) => category.pets)
+  category: CategoryEntity;
 }
