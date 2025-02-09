@@ -13,7 +13,7 @@ export class GetAllCategoryHandler
     private readonly categoryRepository: Repository<CategoryEntity>,
   ) {}
 
-  execute(query: GetAllCategoryQuery): Promise<CategoryEntity[]> {
+  execute(_query: GetAllCategoryQuery): Promise<CategoryEntity[]> {
     return this.categoryRepository.find({ relations: ['pets'] });
   }
 }
