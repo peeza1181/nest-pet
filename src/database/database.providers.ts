@@ -11,7 +11,7 @@ export const databaseProviders = [
         username: 'root',
         password: '1234',
         database: 'pet-category',
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+        entities: [__dirname + '../**/*.entity{.ts,.js}'],
         synchronize: true,
       });
 

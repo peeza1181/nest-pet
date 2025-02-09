@@ -1,12 +1,27 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DatabaseModule } from './database/database.module';
 import { PetsModule } from './pets/pets.module';
 import { CategoryModule } from './category/category.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { PetEntity } from './pets/pet.entity';
+import { CategoryEntity } from './category/category.entity';
 
 @Module({
-  imports: [DatabaseModule, PetsModule, CategoryModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'root',
+      password: '1234',
+      database: 'pet-category',
+      entities: [PetEntity, CategoryEntity],
+      synchronize: true,
+    }),
+    PetsModule,
+    CategoryModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
