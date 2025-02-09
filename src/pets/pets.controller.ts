@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreatePetDto } from './create-pet-dto';
 import { CreatePetCommand } from './commands/create-pet.command';
 import { GetAllPetsQuery } from './queries/get-all-pets.query';
+import { GetAllPetsPaginationQuery } from './queries/get-all-pets-pagination.Query';
 
 @Controller('pets')
 export class PetsController {
@@ -20,5 +21,13 @@ export class PetsController {
   @Get()
   async getAllPets() {
     return this.queryBus.execute(new GetAllPetsQuery());
+  }
+
+  @Get('pagination')
+  async getAllPetsPagination(
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+  ) {
+    return this.queryBus.execute(new GetAllPetsPaginationQuery(page, limit));
   }
 }

@@ -6,10 +6,11 @@ import { CategoryEntity } from 'src/category/category.entity';
 import { CqrsModule } from '@nestjs/cqrs';
 import { CreatePetHandler } from './commands/create-pet.handle';
 import { GetAllPetsHandler } from './queries/get-all-pets.handler';
+import { GetAllPetsPaginationHandler } from './queries/get-all-pets-pagination.handler';
 
 @Module({
   imports: [TypeOrmModule.forFeature([PetEntity, CategoryEntity]), CqrsModule],
   controllers: [PetsController],
-  providers: [CreatePetHandler, GetAllPetsHandler],
+  providers: [CreatePetHandler, GetAllPetsHandler, GetAllPetsPaginationHandler],
 })
 export class PetsModule {}
