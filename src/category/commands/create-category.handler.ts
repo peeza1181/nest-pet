@@ -12,6 +12,7 @@ export class CreateCategoryHandler
     @InjectRepository(CategoryEntity)
     private readonly categoryRepository: Repository<CategoryEntity>,
   ) {}
+
   async execute(command: CreateCategoryCommand): Promise<CategoryEntity> {
     const { name } = command;
     const category = this.categoryRepository.create({ name });

@@ -3,11 +3,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoryEntity } from './category.entity';
 import { CqrsModule } from '@nestjs/cqrs';
 import { CreateCategoryHandler } from './commands/create-category.handler';
-import { CategoriesController } from './categories.controller';
+import { CategoryController } from './category.controller';
+import { GetAllCategoryHandler } from './queries/get-all-category-handler';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CategoryEntity]), CqrsModule],
-  providers: [CreateCategoryHandler],
-  controllers: [CategoriesController],
+  providers: [CreateCategoryHandler, GetAllCategoryHandler],
+  controllers: [CategoryController],
 })
 export class CategoryModule {}
