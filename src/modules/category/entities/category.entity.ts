@@ -1,6 +1,12 @@
 import { BaseEntity } from 'src/libs/db/base.entity';
 import { PetEntity } from 'src/modules/pets/entities/pet.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  DeleteDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('category_entity')
 export class CategoryEntity extends BaseEntity {
@@ -12,4 +18,7 @@ export class CategoryEntity extends BaseEntity {
 
   @OneToMany(() => PetEntity, (pet) => pet.category)
   pets: PetEntity[];
+
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt?: Date;
 }

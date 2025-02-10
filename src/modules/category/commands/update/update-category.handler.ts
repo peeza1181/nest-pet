@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { UpdateCategoryCommand } from './update-category.command';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CategoryEntity } from 'src/category/entities/category.entity';
+import { CategoryEntity } from '../../entities/category.entity';
 import { Repository } from 'typeorm';
 
 @CommandHandler(UpdateCategoryCommand)

@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PetsModule } from './pets/pets.module';
-import { CategoryModule } from './category/category.module';
+import { PetsModule } from './modules/pets/pets.module';
+import { CategoryModule } from './modules/category/category.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PetEntity } from './pets/entities/pet.entity';
-import { CategoryEntity } from './category/entities/category.entity';
+import { PetEntity } from './modules/pets/entities/pet.entity';
+import { CategoryEntity } from './modules/category/entities/category.entity';
 
 @Module({
   imports: [
