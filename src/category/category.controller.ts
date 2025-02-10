@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { CreateCategoryCommand } from './commands/create-category.command';
+import { CreateCategoryCommand } from './commands/create/create-category.command';
 import { CreateCategoryDto } from './dto/create-category-dto';
 import { GetAllCategoryQuery } from './queries/get-all-category.query';
 

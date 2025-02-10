@@ -1,9 +1,9 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreatePetDto } from './create-pet-dto';
-import { CreatePetCommand } from './commands/create-pet.command';
+import { CreatePetCommand } from './commands/create/create-pet.command';
 import { GetAllPetsQuery } from './queries/get-all-pets.query';
-import { GetAllPetsPaginationQuery } from './queries/get-all-pets-pagination.Query';
+import { GetAllPetsPaginationQuery } from './queries/get-all-pets-pagination.query';
 import { GetAllPetsRawSqlQuery } from './queries/get-all-pets-raw-sql.query';
 import { ApiQuery } from '@nestjs/swagger';
 
