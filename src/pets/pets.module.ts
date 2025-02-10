@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { PetsController } from './pets.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PetEntity } from './pet.entity';
-import { CategoryEntity } from 'src/category/category.entity';
+import { PetEntity } from './entities/pet.entity';
+import { CategoryEntity } from 'src/category/entities/category.entity';
 import { CqrsModule } from '@nestjs/cqrs';
 import { CreatePetHandler } from './commands/create/create-pet.handle';
 import { GetAllPetsHandler } from './queries/get-all-pets.handler';

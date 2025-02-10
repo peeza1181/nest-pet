@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetAllPetsRawSqlQuery } from './get-all-pets-raw-sql.query';
 import { DataSource } from 'typeorm';
-import { PetEntity } from '../pet.entity';
+import { PetEntity } from '../entities/pet.entity';
 
 @QueryHandler(GetAllPetsRawSqlQuery)
 export class GetAllPetsRawSqlHandler

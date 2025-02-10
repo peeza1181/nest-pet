@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CategoryEntity } from './category.entity';
+import { CategoryEntity } from './entities/category.entity';
 import { CqrsModule } from '@nestjs/cqrs';
 import { CreateCategoryHandler } from './commands/create/create-category.handler';
 import { CategoryController } from './category.controller';

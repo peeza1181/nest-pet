@@ -4,8 +4,8 @@ import { AppService } from './app.service';
 import { PetsModule } from './pets/pets.module';
 import { CategoryModule } from './category/category.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PetEntity } from './pets/pet.entity';
-import { CategoryEntity } from './category/category.entity';
+import { PetEntity } from './pets/entities/pet.entity';
+import { CategoryEntity } from './category/entities/category.entity';
 
 @Module({
   imports: [

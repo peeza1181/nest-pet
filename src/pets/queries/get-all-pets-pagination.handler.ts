@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetAllPetsPaginationQuery } from './get-all-pets-pagination.query';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PetEntity } from '../pet.entity';
+import { PetEntity } from '../entities/pet.entity';
 import { Repository } from 'typeorm';
 
 @QueryHandler(GetAllPetsPaginationQuery)

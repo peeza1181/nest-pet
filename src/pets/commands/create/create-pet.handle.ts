@@ -1,9 +1,9 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { CreatePetCommand } from '../create-pet.command';
+import { CreatePetCommand } from './create-pet.command';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PetEntity } from '../../pet.entity';
+import { PetEntity } from '../../entities/pet.entity';
 import { Repository } from 'typeorm';
-import { CategoryEntity } from 'src/category/category.entity';
+import { CategoryEntity } from 'src/category/entities/category.entity';
 
 @CommandHandler(CreatePetCommand)
 export class CreatePetHandler implements ICommandHandler<CreatePetCommand> {
