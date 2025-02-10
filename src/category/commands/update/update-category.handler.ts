@@ -24,7 +24,23 @@ export class UpdateCategoryHandler
       throw new Error(`Category with ID ${id} not found.`);
     }
 
-    Object.assign(category, updateCategoryDto);
-    return await this.categoryRepository.save(category);
+    await this.categoryRepository
+      .createQueryBuilder()
+      .update(CategoryEntity)
+      .set(updateCategoryDto)
+      .where('id = :id', { id })
+      .execute();
+
+    const updateCategory = await this.categoryRepository.findOne({
+      where: { id },
+    });
+
+    if (!updateCategory) {
+      throw new Error(
+        `Failed to update. Category with ID ${id} not found after update.`,
+      );
+    }
+
+    return updateCategory;
   }
 }
