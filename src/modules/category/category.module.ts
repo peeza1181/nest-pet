@@ -6,6 +6,7 @@ import { CreateCategoryHandler } from './commands/create/create-category.handler
 import { CategoryController } from './category.controller';
 import { GetAllCategoryHandler } from './queries/get-all-category-handler';
 import { UpdateCategoryHandler } from './commands/update/update-category.handler';
+import { SoftDeleteCategoryHandler } from './commands/delete/soft-delete-category.handler';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CategoryEntity]), CqrsModule],
@@ -13,6 +14,7 @@ import { UpdateCategoryHandler } from './commands/update/update-category.handler
     CreateCategoryHandler,
     GetAllCategoryHandler,
     UpdateCategoryHandler,
+    SoftDeleteCategoryHandler,
   ],
   controllers: [CategoryController],
 })

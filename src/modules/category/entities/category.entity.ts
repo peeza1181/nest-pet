@@ -1,4 +1,5 @@
 import { BaseEntity } from 'src/libs/db/base.entity';
+import { StatusEnum } from 'src/libs/enums/status.enum';
 import { PetEntity } from 'src/modules/pets/entities/pet.entity';
 import {
   Column,
@@ -19,6 +20,17 @@ export class CategoryEntity extends BaseEntity {
   @OneToMany(() => PetEntity, (pet) => pet.category)
   pets: PetEntity[];
 
-  @DeleteDateColumn({ name: 'deleted_at' })
+  @DeleteDateColumn({
+    name: 'deleted_at',
+    type: 'timestamp',
+    nullable: true,
+  })
   deletedAt?: Date;
+
+  @Column({
+    type: 'enum',
+    enum: StatusEnum,
+    default: StatusEnum.ACTIVE,
+  })
+  status: StatusEnum;
 }
