@@ -1,7 +1,13 @@
 import { BaseEntity } from 'src/libs/db/base.entity';
 import { StatusEnum } from 'src/libs/enums/status.enum';
 import { CategoryEntity } from 'src/modules/category/entities/category.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  DeleteDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('pet_entity')
 export class PetEntity extends BaseEntity {
@@ -13,6 +19,13 @@ export class PetEntity extends BaseEntity {
 
   @ManyToOne(() => CategoryEntity, (category) => category.pets)
   category: CategoryEntity;
+
+  @DeleteDateColumn({
+    name: 'deleted_at',
+    type: 'timestamp',
+    nullable: true,
+  })
+  deletedAt?: Date;
 
   @Column({
     type: 'enum',

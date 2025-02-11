@@ -8,6 +8,7 @@ import { CreatePetHandler } from './commands/create/create-pet.handle';
 import { GetAllPetsHandler } from './queries/get-all-pets.handler';
 import { GetAllPetsPaginationHandler } from './queries/get-all-pets-pagination.handler';
 import { GetAllPetsRawSqlHandler } from './queries/get-all-pets-raw-sql.handler';
+import { SoftDeletePetHandler } from './commands/delete/soft-delete-pet.handler';
 
 @Module({
   imports: [TypeOrmModule.forFeature([PetEntity, CategoryEntity]), CqrsModule],
@@ -17,6 +18,7 @@ import { GetAllPetsRawSqlHandler } from './queries/get-all-pets-raw-sql.handler'
     GetAllPetsHandler,
     GetAllPetsPaginationHandler,
     GetAllPetsRawSqlHandler,
+    SoftDeletePetHandler,
   ],
 })
 export class PetsModule {}
