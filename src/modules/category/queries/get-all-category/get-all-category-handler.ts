@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetAllCategoryQuery } from './get-all-category.query';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CategoryEntity } from '../entities/category.entity';
+import { CategoryEntity } from '../../entities/category.entity';
 import { Repository } from 'typeorm';
 
 @QueryHandler(GetAllCategoryQuery)

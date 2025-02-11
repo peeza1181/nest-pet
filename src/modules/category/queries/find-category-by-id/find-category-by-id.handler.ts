@@ -18,6 +18,7 @@ export class FindCategoryByIdHandler
 
     const category = await this.categoryRepository.findOne({
       where: { id },
+      relations: ['pets'],
     });
 
     if (!category) {
