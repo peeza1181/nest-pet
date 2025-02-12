@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
   Query,
 } from '@nestjs/common';
@@ -15,6 +16,8 @@ import { GetAllPetsPaginationQuery } from './queries/get-all-pets-pagination.que
 import { GetAllPetsRawSqlQuery } from './queries/get-all-pets-raw-sql.query';
 import { ApiQuery } from '@nestjs/swagger';
 import { SoftDeletePetCommand } from './commands/delete/soft-delete-pet.command';
+import { UpdatePetDto } from './dto/update-pet.dto';
+import { UpdatePetCommand } from './commands/update/update-pet.command';
 
 @Controller('pets')
 export class PetsController {
@@ -52,5 +55,12 @@ export class PetsController {
   @Delete(':id')
   async softDeletePet(@Param('id') id: number) {
     return await this.commandBus.execute(new SoftDeletePetCommand(id));
+  }
+
+  @Patch(':id')
+  async updatePet(@Param('id') id: number, @Body() updatePetDto: UpdatePetDto) {
+    return await this.commandBus.execute(
+      new UpdatePetCommand(id, updatePetDto),
+    );
   }
 }
