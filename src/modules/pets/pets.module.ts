@@ -5,22 +5,24 @@ import { PetEntity } from './entities/pet.entity';
 import { CategoryEntity } from '../category/entities/category.entity';
 import { CqrsModule } from '@nestjs/cqrs';
 import { CreatePetHandler } from './commands/create/create-pet.handle';
-import { GetAllPetsHandler } from './queries/get-all-pets.handler';
+// import { GetAllPetsHandler } from './queries/get-all-pets.handler';
 import { GetAllPetsPaginationHandler } from './queries/get-all-pets-pagination.handler';
 import { GetAllPetsRawSqlHandler } from './queries/get-all-pets-raw-sql.handler';
 import { SoftDeletePetHandler } from './commands/delete/soft-delete-pet.handler';
 import { UpdatePetHandler } from './commands/update/update-pet.handler';
+import { GetAllPetsHandler } from './queries/get-all-pets/get-all-pets.handler';
 
 @Module({
   imports: [TypeOrmModule.forFeature([PetEntity, CategoryEntity]), CqrsModule],
   controllers: [PetsController],
   providers: [
     CreatePetHandler,
-    GetAllPetsHandler,
+    // GetAllPetsHandler,
     GetAllPetsPaginationHandler,
     GetAllPetsRawSqlHandler,
     SoftDeletePetHandler,
     UpdatePetHandler,
+    GetAllPetsHandler,
   ],
 })
 export class PetsModule {}

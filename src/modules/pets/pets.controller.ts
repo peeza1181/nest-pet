@@ -11,13 +11,14 @@ import {
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreatePetDto } from './create-pet-dto';
 import { CreatePetCommand } from './commands/create/create-pet.command';
-import { GetAllPetsQuery } from './queries/get-all-pets.query';
+import { GetAllPetsQuery } from './queries/get-all-pets/get-all-pets.query';
 import { GetAllPetsPaginationQuery } from './queries/get-all-pets-pagination.query';
 import { GetAllPetsRawSqlQuery } from './queries/get-all-pets-raw-sql.query';
 import { ApiQuery } from '@nestjs/swagger';
 import { SoftDeletePetCommand } from './commands/delete/soft-delete-pet.command';
 import { UpdatePetDto } from './dto/update-pet.dto';
 import { UpdatePetCommand } from './commands/update/update-pet.command';
+import { PetEntity } from './entities/pet.entity';
 
 @Controller('pets')
 export class PetsController {
@@ -32,9 +33,14 @@ export class PetsController {
     return this.commandBus.execute(new CreatePetCommand(name, categoryId));
   }
 
-  @Get()
-  async getAllPets() {
-    return this.queryBus.execute(new GetAllPetsQuery());
+  @Get('all')
+  @ApiQuery({ name: 'page', required: false })
+  @ApiQuery({ name: 'limit', required: false })
+  async getAllPets(
+    @Query('limit') limit: number = 10,
+    @Query('page') page: number = 1,
+  ): Promise<PetEntity[]> {
+    return this.queryBus.execute(new GetAllPetsQuery(page, limit));
   }
 
   @Get('pagination')
