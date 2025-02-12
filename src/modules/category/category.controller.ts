@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
   Query,
 } from '@nestjs/common';
@@ -42,14 +43,9 @@ export class CategoryController {
     return this.queryBus.execute(new GetAllCategoryQuery(page, limit));
   }
 
-  @Post(':id')
-  async updateCategory(
-    @Param('id') id: number,
-    @Body() updateCategoryDto: UpdateCategoryDto,
-  ) {
-    return await this.commandBus.execute(
-      new UpdateCategoryCommand(id, updateCategoryDto),
-    );
+  @Get(':id')
+  async getCategoryById(@Param('id') id: number): Promise<CategoryEntity> {
+    return this.queryBus.execute(new FindCategoryByIdQuery(id));
   }
 
   @Delete(':id')
@@ -57,8 +53,13 @@ export class CategoryController {
     await this.commandBus.execute(new SoftDeleteCategoryCommand(id));
   }
 
-  @Get(':id')
-  async getCategoryById(@Param('id') id: number): Promise<CategoryEntity> {
-    return this.queryBus.execute(new FindCategoryByIdQuery(id));
+  @Patch(':id')
+  async updateCategory(
+    @Param('id') id: number,
+    @Body() updateCategoryDto: UpdateCategoryDto,
+  ) {
+    return await this.commandBus.execute(
+      new UpdateCategoryCommand(id, updateCategoryDto),
+    );
   }
 }

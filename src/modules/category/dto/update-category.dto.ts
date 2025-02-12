@@ -1,3 +1,4 @@
 export class UpdateCategoryDto {
-    name?: string;
+  name?: string;
+  categoryId?: number;
 }

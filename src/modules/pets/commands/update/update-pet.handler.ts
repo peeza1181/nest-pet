@@ -5,7 +5,9 @@ import { PetEntity } from '../../entities/pet.entity';
 import { Repository } from 'typeorm';
 
 @CommandHandler(UpdatePetCommand)
-export class UpdatePetHandler implements IQueryHandler<UpdatePetCommand> {
+export class UpdatePetHandler 
+implements IQueryHandler<UpdatePetCommand> 
+{
   constructor(
     @InjectRepository(PetEntity)
     private readonly petRepository: Repository<PetEntity>,
@@ -31,7 +33,9 @@ export class UpdatePetHandler implements IQueryHandler<UpdatePetCommand> {
 
     const updatePet = await this.petRepository.findOne({ where: { id } });
     if (!updatePet) {
-      throw new Error(`Failed to update Pet with ID ${id}.`);
+      throw new Error(
+        `Failed to update Pet with ID ${id}.`
+      );
     }
 
     return updatePet;
