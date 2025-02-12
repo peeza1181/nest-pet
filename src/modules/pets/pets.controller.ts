@@ -9,7 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { CreatePetDto } from './create-pet-dto';
+import { CreatePetDto } from './dto/create-pet-dto';
 import { CreatePetCommand } from './commands/create/create-pet.command';
 import { GetAllPetsQuery } from './queries/get-all-pets/get-all-pets.query';
 import { ApiQuery } from '@nestjs/swagger';
