@@ -19,6 +19,7 @@ import { SoftDeletePetCommand } from './commands/delete/soft-delete-pet.command'
 import { UpdatePetDto } from './dto/update-pet.dto';
 import { UpdatePetCommand } from './commands/update/update-pet.command';
 import { PetEntity } from './entities/pet.entity';
+import { FindPetsByIdQuery } from './queries/find-pets-by-id/find-pets-by-id.query';
 
 @Controller('pets')
 export class PetsController {
@@ -41,6 +42,11 @@ export class PetsController {
     @Query('page') page: number = 1,
   ): Promise<PetEntity[]> {
     return this.queryBus.execute(new GetAllPetsQuery(page, limit));
+  }
+
+  @Get(':id')
+  async getPetById(@Param('id') id: number): Promise<PetEntity> {
+    return this.queryBus.execute(new FindPetsByIdQuery(id));
   }
 
   @Get('pagination')

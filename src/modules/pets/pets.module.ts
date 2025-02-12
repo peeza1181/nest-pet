@@ -11,6 +11,7 @@ import { GetAllPetsRawSqlHandler } from './queries/get-all-pets-raw-sql.handler'
 import { SoftDeletePetHandler } from './commands/delete/soft-delete-pet.handler';
 import { UpdatePetHandler } from './commands/update/update-pet.handler';
 import { GetAllPetsHandler } from './queries/get-all-pets/get-all-pets.handler';
+import { FindPetsByIdHandler } from './queries/find-pets-by-id/find-pets-by-id.handler';
 
 @Module({
   imports: [TypeOrmModule.forFeature([PetEntity, CategoryEntity]), CqrsModule],
@@ -23,6 +24,7 @@ import { GetAllPetsHandler } from './queries/get-all-pets/get-all-pets.handler';
     SoftDeletePetHandler,
     UpdatePetHandler,
     GetAllPetsHandler,
+    FindPetsByIdHandler,
   ],
 })
 export class PetsModule {}
